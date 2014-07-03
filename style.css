@@ -1,0 +1,89 @@
+html, body, div, span,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, polygon, q, s, samp,
+small, strike, strong, sub, sup, svg, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+html, body {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+h1, div#content {
+  text-align: center;
+}
+
+.example { float: left; }
+
+#ex1 {
+  width: 300px;
+}
+
+#ex2 {
+  width: 50%;
+}
+
+
+ul { list-style: none; }
+
+#ex1 ul.sockets li.Metric,
+#ex1 ul.sockets li.AF {
+  border-top: 1px dashed black;  
+  margin: 5px;
+}
+
+ul.sockets li span,
+ul.sockets li svg,
+ul.sockets li ul {
+  vertical-align: middle;
+}
+
+ul.sockets li span {
+  display: inline-block;
+  text-align: right;
+  width: 30%;
+}
+
+ul.sockets li ul {
+  display: inline-block;
+  text-align: left;
+  width: 30%;
+  font-size: 0.8em;
+}
+
+svg {
+  margin: 1em;  
+}
+
+svg polygon {
+  stroke-width: 1;
+}
+
+.AF svg polygon {
+  stroke: black;
+  fill: yellow;
+}
+
+.Metric svg polygon {
+  stroke: black;
+  fill: lime;
+}
