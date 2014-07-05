@@ -1,26 +1,13 @@
-/*global XMLHttpRequest,render*/
+/*global render,util*/
 
 var socket2me = (function () {
 
-  function loadJSON(url, success, error) {
-    var xhr = new XMLHttpRequest();
-    //xhr.overrideMimeType("application/json");
-    xhr.open('GET', url, true);
-
-    // Response handlers.
-    xhr.onload = function () {
-      if (success) { success(xhr.responseText); }
-    };
-    xhr.onerror = function () {
-      if (error) { error(xhr.responseText); }
-    };
-
-    xhr.send(null);
-  }
-
   function addItemToThis(data) {
-    var items = this,
-      item = { name: data.name, system: data.system },
+    var item = {
+        name: data.name,
+        system: data.system
+      },
+      items = this,
       uomInch = "\"",
       uomMM = "mm",
       mmPerInch = 25.4;
@@ -48,7 +35,7 @@ var socket2me = (function () {
 
   function init(url) {
   // Call to function with anonymous callback
-    loadJSON(url, function (response) {
+    util.loadJSON(url, function (response) {
 
       // get json data
       var jsonResponse = JSON.parse(response),
