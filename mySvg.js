@@ -16,7 +16,7 @@ var mySvg = (function () {
   }
 
   function getSvgElement(w, h) {
-    console.log('getSvgElement', w, h);
+    //console.log('getSvgElement', w, h);
     var svg = document.createElementNS(xmlns, "svg");
     w = w + 2;
     h = h + 2;
@@ -35,7 +35,7 @@ var mySvg = (function () {
   // public functions
 
   function getSvgHexagon(r, x, y) {
-    console.log('getSvgHexagon', r, x, y);
+    //console.log('getSvgHexagon', r, x, y);
     var w = r * 2,
       h = r * Math.sqrt(3),
       el = getSvgElement(w, h);

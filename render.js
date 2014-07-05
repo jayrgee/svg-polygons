@@ -2,34 +2,50 @@
 
 var render = (function () {
 
+  function getSvgHexagon(size) {
+    var r = size / Math.sqrt(3),
+      x = r,
+      y = size / 2;
+
+    return mySvg.getSvgHexagon(r, x, y);
+  }
+
   function addItemToThisList(item) {
     var elList = this,
-      elListItm = document.createElement("li"),
-      elSpanNm = document.createElement("span"),
-      elListSz = document.createElement("ul"),
-      elListSzItmMM = document.createElement("li"),
-      elListSzItmAF = document.createElement("li"),
-      dpi = 96,
-      unitInch = "\"",
-      unitMM = "mm",
-      size = item.afSize * dpi,
-      r = size / Math.sqrt(3),
-      x = r,
-      y = size / 2,
-      elSvg = mySvg.getSvgHexagon(r, x, y);
+      elListItm,
+      elSpanNm,
+      elListSz,
+      elListSzItmMM,
+      elListSzItmAF,
 
+      dpi = 96,
+      size = item.sizeAF * dpi,
+      elSvg = getSvgHexagon(size);
+
+    elListItm = document.createElement("li");
     elListItm.setAttribute("class", item.system);
 
+    elSpanNm = document.createElement("span");
     elSpanNm.setAttribute("class", "name");
     elSpanNm.textContent = item.name;
+
     elListItm.appendChild(elSpanNm);
 
     elListItm.appendChild(elSvg);
 
+    elListSz = document.createElement("ul");
     elListSz.setAttribute("class", "size");
-    elListSzItmMM.textContent = item.mmSize.toFixed(2) + unitMM;
-    elListSzItmAF.textContent = item.afSize.toFixed(3) + unitInch;
+
+    elListSzItmMM = document.createElement("li");
+
+    elListSzItmMM.textContent = item.labelMM;
+
     elListSz.appendChild(elListSzItmMM);
+
+    elListSzItmAF = document.createElement("li");
+
+    elListSzItmAF.textContent = item.labelAF;
+
     elListSz.appendChild(elListSzItmAF);
 
     elListItm.appendChild(elListSz);
@@ -39,7 +55,7 @@ var render = (function () {
 
   // public functions
 
-  function renderTheseItems(id) {
+  function appendElementWithThisList(id) {
     var items = this,
       elContent = document.getElementById("content"),
       elDiv = document.createElement("div"),
@@ -56,6 +72,6 @@ var render = (function () {
   }
 
   return { // exports
-    renderTheseItems: renderTheseItems
+    appendElementWithThisList: appendElementWithThisList
   };
 }());
