@@ -1,7 +1,6 @@
-var hex = (function () {
+var polygons = (function () {
 
-  function getCoords(n, r, dx, dy) {
-    //console.log('getCoords');
+  function getVerticies(n, r, dx, dy) {
     var i,
       coord = {},
       coords = [];
@@ -16,7 +15,7 @@ var hex = (function () {
   }
 
   return { // exports
-    getCoords: getCoords
+    getVerticies: getVerticies
   };
 
 }());

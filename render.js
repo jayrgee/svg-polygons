@@ -1,4 +1,4 @@
-/*global mySvg,hex,XMLHttpRequest*/
+/*global svgPolygons*/
 
 var render = (function () {
 
@@ -7,7 +7,7 @@ var render = (function () {
       x = r,
       y = size / 2;
 
-    return mySvg.getSvgHexagon(r, x, y);
+    return svgPolygons.getHexagon(r, x, y);
   }
 
   function addItemToThisList(item) {
