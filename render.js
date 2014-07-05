@@ -1,6 +1,7 @@
 /*global svgPolygons*/
 
 var render = (function () {
+  var dpi = 96;
 
   function getSvgHexagon(size) {
     var r = size / Math.sqrt(3),
@@ -17,37 +18,27 @@ var render = (function () {
       elListSz,
       elListSzItmMM,
       elListSzItmAF,
-
-      dpi = 96,
-      size = item.sizeAF * dpi,
-      elSvg = getSvgHexagon(size);
-
-    elListItm = document.createElement("li");
-    elListItm.setAttribute("class", item.system);
+      elSvg = getSvgHexagon(item.sizeAF * dpi);
 
     elSpanNm = document.createElement("span");
     elSpanNm.setAttribute("class", "name");
     elSpanNm.textContent = item.name;
 
-    elListItm.appendChild(elSpanNm);
+    elListSzItmMM = document.createElement("li");
+    elListSzItmMM.textContent = item.labelMM;
 
-    elListItm.appendChild(elSvg);
+    elListSzItmAF = document.createElement("li");
+    elListSzItmAF.textContent = item.labelAF;
 
     elListSz = document.createElement("ul");
     elListSz.setAttribute("class", "size");
-
-    elListSzItmMM = document.createElement("li");
-
-    elListSzItmMM.textContent = item.labelMM;
-
     elListSz.appendChild(elListSzItmMM);
-
-    elListSzItmAF = document.createElement("li");
-
-    elListSzItmAF.textContent = item.labelAF;
-
     elListSz.appendChild(elListSzItmAF);
 
+    elListItm = document.createElement("li");
+    elListItm.setAttribute("class", item.system);
+    elListItm.appendChild(elSpanNm);
+    elListItm.appendChild(elSvg);
     elListItm.appendChild(elListSz);
 
     elList.appendChild(elListItm);
@@ -55,20 +46,23 @@ var render = (function () {
 
   // public functions
 
-  function appendElementWithThisList(id) {
+  function appendElementWithThisList(data) {
     var items = this,
-      elContent = document.getElementById("content"),
-      elDiv = document.createElement("div"),
-      elList = document.createElement("ul");
+      elParent,
+      elDiv,
+      elList;
 
+    elList = document.createElement("ul");
     elList.setAttribute("class", "sockets");
     items.forEach(addItemToThisList, elList);
 
-    elDiv.setAttribute("id", id);
+    elDiv = document.createElement("div");
+    elDiv.setAttribute("id", data.id);
     elDiv.setAttribute("class", "example");
     elDiv.appendChild(elList);
 
-    elContent.appendChild(elDiv);
+    elParent = document.getElementById(data.parentId);
+    elParent.appendChild(elDiv);
   }
 
   return { // exports
