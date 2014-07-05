@@ -46,9 +46,9 @@ var socket2me = (function () {
     items.push(item);
   }
 
-  function init() {
+  function init(url) {
   // Call to function with anonymous callback
-    loadJSON('toolkit.json', function (response) {
+    loadJSON(url, function (response) {
 
       // get json data
       var jsonResponse = JSON.parse(response),
