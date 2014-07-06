@@ -17,14 +17,20 @@ var render = (function () {
       elListItm,
       elSpanSides,
       elSpanNm,
+      elLink,
       elSvg = getSvgPolygon(item.sides, item.diameter * dpi);
 
     elSpanSides = document.createElement("span");
+    elSpanSides.setAttribute("class", "size");
     elSpanSides.textContent = item.sides;
+
+    elLink = document.createElement("a");
+    elLink.href = item.link;
+    elLink.textContent = item.name;
 
     elSpanNm = document.createElement("span");
     elSpanNm.setAttribute("class", "name");
-    elSpanNm.textContent = item.name;
+    elSpanNm.appendChild(elLink);
 
     elListItm = document.createElement("li");
     elListItm.appendChild(elSpanSides);
@@ -43,7 +49,7 @@ var render = (function () {
       elList;
 
     elList = document.createElement("ul");
-    elList.setAttribute("class", "sockets");
+    elList.setAttribute("class", "polygons");
     items.forEach(addItemToThisList, elList);
 
     elDiv = document.createElement("div");

@@ -1,0 +1,35 @@
+.example {
+  width: 100%;
+}
+
+
+ul { list-style: none; }
+
+ul.polygons li {
+  border-top: 1px dashed black;  
+  margin: 5px;
+}
+
+ul.polygons li span,
+ul.polygons li svg,
+ul.polygons li ul {
+  vertical-align: middle;
+}
+
+ul.polygons li span {
+  display: inline-block;
+}
+
+ul.polygons li span.sides {
+  text-align: right;
+}
+
+svg {
+  margin: 1em;  
+}
+
+svg polygon {
+  stroke: black;
+  stroke-width: 1;
+  fill: lime;
+}

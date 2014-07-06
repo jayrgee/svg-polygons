@@ -7,7 +7,7 @@ var regularPolygons = (function () {
         sides: data.n,
         name: data.name,
         link: data.link,
-        diameter: 1
+        diameter: 2
       },
       items = this;
 
