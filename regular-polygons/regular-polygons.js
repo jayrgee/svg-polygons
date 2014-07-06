@@ -28,9 +28,7 @@ var regularPolygons = (function () {
       //model.items.sort(function (a, b) { return a.n - b.n; });
 
       // render
-      [
-        {id: "ex1", parentId: "content"}
-      ].forEach(render.appendElementWithThisList, model.items);
+      render.appendElementWithThisList.call(model.items, {id: "ex1", parentId: "content"});
 
     });
   }
