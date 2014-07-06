@@ -39,19 +39,18 @@ var socket2me = (function () {
 
       // get json data
       var jsonResponse = JSON.parse(response),
-        sockets = jsonResponse.sockets,
-        items = [],
-        instances = [
-          {id: "ex1", parentId: "content"},
-          {id: "ex2", parentId: "content"}
-        ];
+        data = jsonResponse.sockets,
+        model = { "items": [] };
 
-      // get item (model) data
-      sockets.forEach(addItemToThis, items);
-      items.sort(function (a, b) { return a.sizeMM - b.sizeMM; });
+      data.forEach(addItemToThis, model.items);
+      model.items.sort(function (a, b) { return a.sizeMM - b.sizeMM; });
 
       // render
-      instances.forEach(render.appendElementWithThisList, items);
+      [
+        {id: "ex1", parentId: "content"},
+        {id: "ex2", parentId: "content"}
+      ].forEach(render.appendElementWithThisList, model.items);
+
     });
   }
 

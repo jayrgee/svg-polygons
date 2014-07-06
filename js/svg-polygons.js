@@ -38,7 +38,8 @@ var svgPolygons = (function () {
   // public functions
   function getRegularPolygon(n, r, x, y) {
     var w = r * 2,
-      h = r * Math.sqrt(3),
+      //h = r * Math.sqrt(3),
+      h = w,
       el = getSvgElement(w, h);
 
     var poly = getSvgPolygon(n, r, x, y);
