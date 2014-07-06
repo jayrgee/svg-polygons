@@ -3,14 +3,6 @@
 var render = (function () {
   var dpi = 96;
 
-  function getSvgHexagon(size) {
-    var r = size / Math.sqrt(3),
-      x = r,
-      y = size / 2;
-
-    return svgPolygons.getHexagon(r, x, y);
-  }
-
   function addItemToThisList(item) {
     var elList = this,
       elListItm,
@@ -18,7 +10,7 @@ var render = (function () {
       elListSz,
       elListSzItmMM,
       elListSzItmAF,
-      elSvg = getSvgHexagon(item.sizeAF * dpi);
+      elSvg = svgPolygons.getHexagon(item.sizeAF * dpi / Math.sqrt(3));
 
     elSpanNm = document.createElement("span");
     elSpanNm.setAttribute("class", "name");

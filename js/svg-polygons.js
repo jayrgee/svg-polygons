@@ -36,21 +36,31 @@ var svgPolygons = (function () {
   }
 
   // public functions
-  function getRegularPolygon(n, r, x, y) {
-    var w = r * 2,
-      //h = r * Math.sqrt(3),
-      h = w,
-      el = getSvgElement(w, h);
+  function getRegularPolygon(n, r, x, y, w, h) {
+    var el,
+      poly;
 
-    var poly = getSvgPolygon(n, r, x, y);
+    x = x || r;
+    y = y || n % 2 == 0 ? r * (Math.cos(Math.PI / n)) : r;
+    w = w || 2 * r;
+    h = h || n % 2 == 0 ? r * (2 * Math.cos(Math.PI / n)) : r * (1 + Math.cos(Math.PI / n));
+
+    el = getSvgElement(w, h);
+    poly = getSvgPolygon(n, r, x, y, w, h);
 
     el.appendChild(poly);
 
     return el;
   }
 
-  function getHexagon(r, x, y) {
-    return getRegularPolygon(6, r, x, y);
+  function getHexagon(r, x, y, w, h) {
+
+    x = x || r;
+    y = y || r * Math.sqrt(3) / 2;
+    w = w || 2 * r;
+    h = h || r * Math.sqrt(3);
+
+    return getRegularPolygon(6, r, x, y, w, h);
   }
 
   return { // exports

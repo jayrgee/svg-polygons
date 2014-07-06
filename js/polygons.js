@@ -1,13 +1,16 @@
 var polygons = (function () {
 
-  function getVerticies(n, r, dx, dy) {
+  function getVerticies(n, radius, dx, dy) {
     var i,
       coord = {},
-      coords = [];
+      coords = [],
+      extAngle = 2 * Math.PI / n,
+      di = n % 2 == 0 ? 0.5 : 0; // di rotates co-ords so base edge always horizontal
+
     for (i = 0; i < n; i++) {
       coord = {
-        x: dx + r * Math.cos(2 * Math.PI * i / n),
-        y: dy + r * Math.sin(2 * Math.PI * i / n)
+        x: dx + radius * Math.sin(extAngle * (i + di)),
+        y: dy - radius * Math.cos(extAngle * (i + di))
       };
       coords.push(coord);
     }

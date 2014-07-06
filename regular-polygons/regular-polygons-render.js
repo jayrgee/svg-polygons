@@ -3,22 +3,13 @@
 var render = (function () {
   var dpi = 96;
 
-  function getSvgPolygon(sides, diameter) {
-
-    var r = diameter / 2,
-      x = r,
-      y = r;
-
-    return svgPolygons.getRegularPolygon(sides, r, x, y);
-  }
-
   function addItemToThisList(item) {
     var elList = this,
       elListItm,
       elSpanSides,
       elSpanNm,
       elLink,
-      elSvg = getSvgPolygon(item.sides, item.diameter * dpi);
+      elSvg = svgPolygons.getRegularPolygon(item.sides, item.radius * dpi);
 
     elSpanSides = document.createElement("span");
     elSpanSides.setAttribute("class", "size");
