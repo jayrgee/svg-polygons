@@ -36,31 +36,34 @@ var svgPolygons = (function () {
   }
 
   // public functions
-  function getRegularPolygon(n, r, x, y, w, h) {
+  function getRegularPolygon(n, r, options) {
     var el,
-      poly;
-
-    x = x || r;
-    y = y || n % 2 == 0 ? r * (Math.cos(Math.PI / n)) : r;
-    w = w || 2 * r;
-    h = h || n % 2 == 0 ? r * (2 * Math.cos(Math.PI / n)) : r * (1 + Math.cos(Math.PI / n));
+      poly,
+      _options = options || {},
+      w = _options.w || (n % 2 == 0 && (n / 2) % 2 == 1) ? 2 * r : 2 * r * Math.sin((Math.PI / n) * (n + (n % 2) - 2) / 2),
+      h = _options.h || n % 2 == 0 ? r * (2 * Math.cos(Math.PI / n)) : r * (1 + Math.cos(Math.PI / n)),
+      x = _options.x || w / 2,
+      y = _options.y || n % 2 == 0 ? r * (Math.cos(Math.PI / n)) : r;
 
     el = getSvgElement(w, h);
-    poly = getSvgPolygon(n, r, x, y, w, h);
+    poly = getSvgPolygon(n, r, x, y);
 
     el.appendChild(poly);
 
     return el;
   }
 
-  function getHexagon(r, x, y, w, h) {
+  function getHexagon(r, options) {
 
-    x = x || r;
-    y = y || r * Math.sqrt(3) / 2;
-    w = w || 2 * r;
-    h = h || r * Math.sqrt(3);
+    var n = 6,
+      _options = options || {};
 
-    return getRegularPolygon(6, r, x, y, w, h);
+    _options.x = _options.x || r;
+    _options.y = _options.y || r * Math.sqrt(3) / 2;
+    _options.w = _options.w || 2 * r;
+    _options.h = _options.h || r * Math.sqrt(3);
+
+    return getRegularPolygon(n, r, _options);
   }
 
   return { // exports
