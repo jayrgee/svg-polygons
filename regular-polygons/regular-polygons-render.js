@@ -9,7 +9,8 @@ var render = (function () {
       elSpanSides,
       elSpanNm,
       elLink,
-      elSvg = svgPolygons.getRegularPolygon(item.sides, item.radius * dpi);
+      elSvg = svgPolygons.getRegularPolygon(item.sides, item.radius * dpi),
+      elSvg2 = svgPolygons.getRegularPolygon(item.sides, item.radius * dpi, {"p": 10});
 
     elSpanSides = document.createElement("span");
     elSpanSides.setAttribute("class", "size");
@@ -26,6 +27,7 @@ var render = (function () {
     elListItm = document.createElement("li");
     elListItm.appendChild(elSpanSides);
     elListItm.appendChild(elSvg);
+    elListItm.appendChild(elSvg2);
     elListItm.appendChild(elSpanNm);
 
     elList.appendChild(elListItm);
