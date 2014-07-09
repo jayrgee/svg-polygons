@@ -1,4 +1,4 @@
-/*global render,util*/
+/*global render,xhr*/
 
 var regularPolygons = (function () {
 
@@ -15,21 +15,19 @@ var regularPolygons = (function () {
   }
 
   function init(url) {
-  // Call to function with anonymous callback
-    util.loadJSON(url, function (response) {
+    // get data
+    xhr.get(url, function (response) {
 
-      // get json data
+      // handle json response
       var jsonResponse = JSON.parse(response),
         data = jsonResponse.polygons.sides,
         model = {"items": [] };
 
       // get item (model) data
       data.forEach(addItemToThis, model.items);
-      //model.items.sort(function (a, b) { return a.n - b.n; });
 
-      // render
+      // render single instance
       render.appendElementWithThisList.call(model.items, {id: "ex1", parentId: "content"});
-
     });
   }
 

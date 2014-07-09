@@ -1,8 +1,7 @@
-/*global polygons*/
+/*global polygons,svgCore*/
 
 var svgPolygons = (function () {
-  var xmlns = 'http://www.w3.org/2000/svg',
-    padding = 1;
+  var padding = 1;
 
   function getPoints(n, r, dx, dy) {
     var coords = polygons.getVerticies(n, r, dx, dy),
@@ -14,21 +13,6 @@ var svgPolygons = (function () {
     }
 
     return points.trim();
-  }
-
-  function getSvgElement(w, h) {
-    //console.log('getSvgElement', w, h);
-    var svg = document.createElementNS(xmlns, "svg");
-    svg.setAttributeNS(null, "width", w);
-    svg.setAttributeNS(null, "height", h);
-    svg.setAttributeNS(null, "viewPort", "0 0 " + w + " " + h);
-    return svg;
-  }
-
-  function getSvgPolygon(n, r, x, y) {
-    var p = document.createElementNS(xmlns, "polygon");
-    p.setAttributeNS(null, "points", getPoints(n, r, x, y));
-    return p;
   }
 
   // public functions
@@ -51,8 +35,8 @@ var svgPolygons = (function () {
     x = x + p;
     y = y + p;
 
-    el = getSvgElement(w, h);
-    poly = getSvgPolygon(n, r, x, y);
+    el = svgCore.getSvgElement(w, h);
+    poly = svgCore.getSvgPolygon(getPoints(n, r, x, y));
 
     el.appendChild(poly);
 

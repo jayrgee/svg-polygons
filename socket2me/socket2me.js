@@ -1,4 +1,4 @@
-/*global render,util*/
+/*global render,xhr*/
 
 var socket2me = (function () {
 
@@ -28,24 +28,25 @@ var socket2me = (function () {
     }
 
     item.labelAF = item.sizeAF.toFixed(3) + uomInch;
-    item.labelMM = item.sizeMM.toFixed(3) + uomMM;
+    item.labelMM = item.sizeMM.toFixed(2) + uomMM;
 
     items.push(item);
   }
 
   function init(url) {
-  // Call to function with anonymous callback
-    util.loadJSON(url, function (response) {
+    // get data
+    xhr.get(url, function (response) {
 
-      // get json data
+      // handle json response
       var jsonResponse = JSON.parse(response),
         data = jsonResponse.sockets,
         model = { "items": [] };
 
+      // get item (model) data
       data.forEach(addItemToThis, model.items);
       model.items.sort(function (a, b) { return a.sizeMM - b.sizeMM; });
 
-      // render
+      // render array of instances
       [
         {id: "ex1", parentId: "content"},
         {id: "ex2", parentId: "content"}
