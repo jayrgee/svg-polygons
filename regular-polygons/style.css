@@ -30,6 +30,6 @@ svg {
 
 svg polygon {
   stroke: black;
-  stroke-width: 1;
+  stroke-width: 10;
   fill: #9966ff;
 }

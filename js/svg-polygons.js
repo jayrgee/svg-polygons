@@ -16,14 +16,15 @@ var svgPolygons = (function () {
   }
 
   // public functions
-  function getRegularPolygon(n, r, options) {
+  function getRegularPolygon(n, r, options, styles) {
     var el,
       poly,
+      _styles = styles || {},
       _options = options || {},
-      origin = polygons.getOrigin(n, r),
       p = _options.p || padding,
       w = _options.w || polygons.getWidth(n, r),
       h = _options.h || polygons.getHeight(n, r),
+      origin = polygons.getOrigin(n, r),
       x,
       y;
 
@@ -36,16 +37,17 @@ var svgPolygons = (function () {
     y = y + p;
 
     el = svgCore.getSvgElement(w, h);
-    poly = svgCore.getSvgPolygon(getPoints(n, r, x, y));
+    poly = svgCore.getSvgPolygon(getPoints(n, r, x, y), _styles);
 
     el.appendChild(poly);
 
     return el;
   }
 
-  function getHexagon(r, options) {
+  function getHexagon(r, options, styles) {
 
     var n = 6,
+      _styles = styles || {},
       _options = options || {};
 
     _options.p = _options.p || padding;
@@ -54,7 +56,7 @@ var svgPolygons = (function () {
     _options.w = _options.w || 2 * r;
     _options.h = _options.h || r * Math.sqrt(3);
 
-    return getRegularPolygon(n, r, _options);
+    return getRegularPolygon(n, r, _options, _styles);
   }
 
   return { // exports
