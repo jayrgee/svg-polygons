@@ -20,8 +20,9 @@ ul.polygons li span {
   display: inline-block;
 }
 
-ul.polygons li span.sides {
+ul.polygons li span.size {
   text-align: right;
+  font-size: 2em;
 }
 
 svg {
@@ -30,6 +31,4 @@ svg {
 
 svg polygon {
   stroke: black;
-  stroke-width: 10;
-  fill: #9966ff;
 }

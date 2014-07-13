@@ -3,7 +3,7 @@
 var svgCore = (function () {
   var xmlns = 'http://www.w3.org/2000/svg';
 
-  function addStyleStOthis(styles) {
+  function addStylesToThis(styles) {
     var e = this;
     if (styles.fill) { e.setAttributeNS(null, "fill", styles.fill); }
     if (styles.stroke) { e.setAttributeNS(null, "stroke", styles.stroke); }
@@ -24,7 +24,7 @@ var svgCore = (function () {
     e.setAttributeNS(null, "cx", cx);
     e.setAttributeNS(null, "cy", cy);
     e.setAttributeNS(null, "r", r);
-    if (styles) { addStyleStOthis.call(e, styles); }
+    if (styles) { addStylesToThis.call(e, styles); }
     return e;
   }
 
@@ -34,21 +34,21 @@ var svgCore = (function () {
     e.setAttributeNS(null, "y1", y1);
     e.setAttributeNS(null, "x2", x2);
     e.setAttributeNS(null, "y2", y2);
-    if (styles) { addStyleStOthis.call(e, styles); }
+    if (styles) { addStylesToThis.call(e, styles); }
     return e;
   }
 
   function getSvgPolygon(points, styles) {
     var e = document.createElementNS(xmlns, "polygon");
     e.setAttributeNS(null, "points", points);
-    if (styles) { addStyleStOthis.call(e, styles); }
+    if (styles) { addStylesToThis.call(e, styles); }
     return e;
   }
 
   function getSvgPolyline(points, styles) {
     var e = document.createElementNS(xmlns, "polyline");
     e.setAttributeNS(null, "points", points);
-    if (styles) { addStyleStOthis.call(e, styles); }
+    if (styles) { addStylesToThis.call(e, styles); }
     return e;
   }
 

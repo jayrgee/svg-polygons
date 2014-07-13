@@ -1,7 +1,7 @@
 /*global polygons,svgCore*/
 
 var svgPolygons = (function () {
-  var padding = 1;
+  var defaultPadding = 1;
 
   function getPoints(n, r, dx, dy) {
     var coords = polygons.getVerticies(n, r, dx, dy),
@@ -21,7 +21,7 @@ var svgPolygons = (function () {
       poly,
       _styles = styles || {},
       _options = options || {},
-      p = _options.p || padding,
+      p = _styles.strokeWidth || defaultPadding,
       w = _options.w || polygons.getWidth(n, r),
       h = _options.h || polygons.getHeight(n, r),
       origin = polygons.getOrigin(n, r),
@@ -50,7 +50,7 @@ var svgPolygons = (function () {
       _styles = styles || {},
       _options = options || {};
 
-    _options.p = _options.p || padding;
+    _styles.strokeWidth = _styles.strokeWidth || defaultPadding;
     _options.x = _options.x || r;
     _options.y = _options.y || r * Math.sqrt(3) / 2;
     _options.w = _options.w || 2 * r;

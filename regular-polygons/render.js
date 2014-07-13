@@ -9,11 +9,13 @@ var render = (function () {
       elSpanSides,
       elSpanNm,
       elLink,
-      elSvg,
-      elSvg2;
+      elSvgs = [],
+      i;
 
-    elSvg = svgPolygons.getRegularPolygon(item.sides, item.radius * dpi);
-    elSvg2 = svgPolygons.getRegularPolygon(item.sides, item.radius * dpi, {"p": 10}, {fill: "red"});
+    elSvgs.push(svgPolygons.getRegularPolygon(item.sides, item.radius * dpi));
+    elSvgs.push(svgPolygons.getRegularPolygon(item.sides, item.radius * dpi, {}, {fill: "red"}));
+    elSvgs.push(svgPolygons.getRegularPolygon(item.sides, item.radius * dpi, {}, {fill: "yellow", strokeWidth: 10}));
+    elSvgs.push(svgPolygons.getRegularPolygon(item.sides, item.radius * dpi, {}, {fill: "#9966ff", strokeWidth: 20}));
 
     elSpanSides = document.createElement("span");
     elSpanSides.setAttribute("class", "size");
@@ -29,8 +31,11 @@ var render = (function () {
 
     elListItm = document.createElement("li");
     elListItm.appendChild(elSpanSides);
-    elListItm.appendChild(elSvg);
-    elListItm.appendChild(elSvg2);
+
+    for (i = 0; i < elSvgs.length; i++) {
+      elListItm.appendChild(elSvgs[i]);
+    }
+
     elListItm.appendChild(elSpanNm);
 
     elList.appendChild(elListItm);
