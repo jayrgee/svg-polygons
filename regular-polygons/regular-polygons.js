@@ -1,33 +1,30 @@
-/*global render,xhr*/
+/*global render,xhr,model,config*/
 
 var regularPolygons = (function () {
 
-  function addItemToThis(data) {
-    var item = {
-        sides: data.n,
-        name: data.name,
-        link: data.link,
-        radius: 1
-      },
-      items = this;
+  function initModel(success) {
+    if (config.xhrEnabled) {
+      xhr.get(config.xhrUrl, function (response) {
+        // handle json response
+        var jsonResponse = JSON.parse(response);
 
-    items.push(item);
+        // get item (model) data
+        jsonResponse.polygons.sides.forEach(model.addItem);
+
+        if (success) { success(model); }
+      });
+    } else {
+      // load data from config (synchronous)
+      config.polygons.sides.forEach(model.addItem);
+      if (success) { success(model); }
+    }
   }
 
-  function init(url) {
+  function init() {
     // get data
-    xhr.get(url, function (response) {
-
-      // handle json response
-      var jsonResponse = JSON.parse(response),
-        data = jsonResponse.polygons.sides,
-        model = {"items": [] };
-
-      // get item (model) data
-      data.forEach(addItemToThis, model.items);
-
+    initModel(function (model) {
       // render single instance
-      render.appendElementWithThisList.call(model.items, {id: "ex1", parentId: "content"});
+      render.appendElementWithThisList.call(model.items(), {id: "ex1", parentId: "content"});
     });
   }
 
