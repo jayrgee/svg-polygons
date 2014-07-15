@@ -13,9 +13,9 @@ var render = (function () {
       i;
 
     elSvgs.push(svgPolygons.getRegularPolygon(item.sides, item.radius * dpi));
-    elSvgs.push(svgPolygons.getRegularPolygon(item.sides, item.radius * dpi, {}, {fill: "red"}));
-    elSvgs.push(svgPolygons.getRegularPolygon(item.sides, item.radius * dpi, {}, {fill: "yellow", strokeWidth: 10}));
-    elSvgs.push(svgPolygons.getRegularPolygon(item.sides, item.radius * dpi, {}, {fill: "#9966ff", strokeWidth: 20}));
+    elSvgs.push(svgPolygons.getRegularPolygon(item.sides, item.radius * dpi, {style: {fill: "yellow", strokeWidth: 10}}));
+    elSvgs.push(svgPolygons.getRegularPolygon(item.sides, item.radius * dpi, {style: {fill: "#9966ff", strokeWidth: 20}}));
+    elSvgs.push(svgPolygons.getRegularPolygon(item.sides, item.radius * dpi, {style: {fill: "lime", strokeWidth: 30}}));
 
     elSpanSides = document.createElement("span");
     elSpanSides.setAttribute("class", "size");

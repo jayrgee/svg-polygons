@@ -26,9 +26,5 @@ ul.polygons li span.size {
 }
 
 svg {
-  margin: 1em;  
-}
-
-svg polygon {
-  stroke: black;
+  margin: 1em;
 }

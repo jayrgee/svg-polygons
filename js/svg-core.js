@@ -5,6 +5,10 @@ var svgCore = (function () {
 
   function addStylesToThis(styles) {
     var e = this;
+
+    styles.stroke = styles.stroke || "black";
+    styles.strokeWidth = styles.strokeWidth || 1;
+
     if (styles.fill) { e.setAttributeNS(null, "fill", styles.fill); }
     if (styles.stroke) { e.setAttributeNS(null, "stroke", styles.stroke); }
     if (styles.strokeWidth) { e.setAttributeNS(null, "stroke-width", styles.strokeWidth); }

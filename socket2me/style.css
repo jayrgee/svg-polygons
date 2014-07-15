@@ -38,16 +38,10 @@ svg {
   margin: 1em;  
 }
 
-svg polygon {
-  stroke-width: 1;
-}
-
 .AF svg polygon {
-  stroke: black;
   fill: yellow;
 }
 
 .Metric svg polygon {
-  stroke: black;
   fill: lime;
 }

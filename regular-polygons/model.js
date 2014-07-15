@@ -10,7 +10,7 @@ var model = (function () {
         sides: data.n,
         name: data.name,
         link: data.link,
-        radius: 1
+        radius: 0.75
       };
 
     items.push(item);
