@@ -1,4 +1,5 @@
 var polygons = (function () {
+  "use strict";
 
   function getVerticies(n, radius, dx, dy) {
     var i,

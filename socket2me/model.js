@@ -1,4 +1,6 @@
 var model = (function () {
+  "use strict";
+
   var items = [];
 
   function getItems() {

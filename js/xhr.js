@@ -1,6 +1,7 @@
 /*global XMLHttpRequest*/
 
 var xhr = (function () {
+  "use strict";
 
   function get(url, success, error) {
     var req = new XMLHttpRequest();

@@ -1,6 +1,8 @@
 /*global polygons,svgCore*/
 
 var svgPolygons = (function () {
+  "use strict";
+
   var defaultPadding = 1;
 
   function getPoints(n, r, dx, dy) {

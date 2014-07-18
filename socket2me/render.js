@@ -1,6 +1,8 @@
 /*global svgPolygons*/
 
 var render = (function () {
+  "use strict";
+
   var dpi = 96;
 
   function addItemToThisList(item) {

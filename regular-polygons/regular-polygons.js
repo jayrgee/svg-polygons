@@ -1,6 +1,7 @@
 /*global render,xhr,model,config*/
 
 var regularPolygons = (function () {
+  "use strict";
 
   function initModel(success) {
     if (config.xhrEnabled) {

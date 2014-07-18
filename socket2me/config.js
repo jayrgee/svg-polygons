@@ -1,4 +1,6 @@
 var config = (function () {
+  "use strict";
+
   return {
 
     // configure xhr

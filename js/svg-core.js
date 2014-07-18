@@ -1,6 +1,8 @@
 /*global polygons*/
 
 var svgCore = (function () {
+  "use strict";
+
   var xmlns = 'http://www.w3.org/2000/svg';
 
   function addStylesToThis(styles) {
