@@ -7,7 +7,7 @@ var config = (function () {
     xhrUrl: "../data/socket-kit.json",
 
     // configure data to be loaded when using file: protocol
-    data: {
+    defaultData: {
       sockets: [
         {"name": "4mm", "system": "Metric", "uom": "mm", "size": 4.0},
         {"name": "4.5mm", "system": "Metric", "uom": "mm", "size": 4.5},

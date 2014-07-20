@@ -1,25 +1,43 @@
-/*global render,model,util*/
+/*global render,model,util,config*/
 
 (function () {
   "use strict";
 
-  function init() {
+  function renderData(data, targets) {
 
-    // get data
-    util.getData(function (data) {
+    // init model
+    data.sockets.forEach(model.addItem);
 
-      // init model
-      data.sockets.forEach(model.addItem);
+    // render targets with model
+    targets.forEach(render.appendElementWithThisList,
+        model.items().sort(function (a, b) { return a.sizeMM - b.sizeMM; })
+      );
 
-      // render array of instances
-      [ {id: "ex1", parentId: "content"},
-        {id: "ex2", parentId: "content"}
-        ].forEach(render.appendElementWithThisList,
-          model.items().sort(function (a, b) { return a.sizeMM - b.sizeMM; })
-        );
-    });
   }
 
-  init();
+  function init(targets) {
+
+    util.getData(
+      config.xhrUrl,
+
+      function getAsyncData(data) {
+
+        renderData(data, targets);
+      },
+
+      function getDefaultData() {
+        var data = config.defaultData || {};
+
+        renderData(data, targets);
+      }
+    );
+  }
+
+  var instances = [
+      {id: "ex1", parentId: "content"},
+      {id: "ex2", parentId: "content"}
+    ];
+
+  init(instances);
 
 }());

@@ -3,20 +3,28 @@
 var xhr = (function () {
   "use strict";
 
+  var handleSuccess,
+    handleError;
+
+  function handler() {
+    if (this.readyState === this.DONE) {
+      if (this.status === 200 &&
+          this.responseText !== null) {
+        // success!
+        handleSuccess(JSON.parse(this.responseText));
+      }
+      // something went wrong
+      handleError({status: this.status, statusText: this.statusText, responseText: this.responseText});
+    }
+  }
+
   function get(url, success, error) {
     var req = new XMLHttpRequest();
-    //req.overrideMimeType("application/json");
+    if (success) { handleSuccess = success; }
+    if (error) { handleError = error; }
+    req.onreadystatechange = handler;
     req.open('GET', url, true);
-
-    // Response handlers.
-    req.onload = function () {
-      if (success) { success(req.responseText); }
-    };
-    req.onerror = function () {
-      if (error) { error(req.responseText); }
-    };
-
-    req.send(null);
+    req.send();
   }
 
   return { // exports

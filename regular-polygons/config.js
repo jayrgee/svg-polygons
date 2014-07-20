@@ -4,10 +4,10 @@ var config = (function () {
   return {
 
     // configure xhr
-    xhrUrl: "../data/regular-polygons.json",
+    xhrUrl: "http://localhost:3000/data/regular-polygons1.json",
 
     // configure data to be loaded when using file: protocol
-    "data": {
+    "defaultData": {
       "polygons": {
         "sides": [
           {"n": 3, "name": "Equilateral Triangle", "link": "https://en.wikipedia.org/wiki/Equilateral_triangle"},

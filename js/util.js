@@ -3,28 +3,25 @@
 var util = (function () {
   "use strict";
 
-  function getData(success) {
-    var data;
+  function getData(url, async, sync) {
 
     if (location.protocol === "http:") {
 
-      xhr.get(config.xhrUrl, function (response) {
+      xhr.get(url,
 
-        // handle json response
-        var jsonResponse = JSON.parse(response);
+        function xhrSuccess(response) {
+          // handle async response
+          if (async) { async(response); }
+        },
 
-        // get item (model) data
-        data = jsonResponse;
-        if (success) { success(data); }
-
-      });
+        function xhrError(response) {
+          // fall-back to sync response
+          if (sync) { sync(response); }
+        });
 
     } else {
-
-      // load data from config (synchronous)
-      data = config.data;
-      if (success) { success(data); }
-
+      // handle sync response
+      if (sync) { sync(null); }
     }
   }
 

@@ -1,21 +1,38 @@
-/*global render,model,util*/
+/*global render,model,util, config*/
 
 (function () {
   "use strict";
 
-  function init() {
+  function renderData(data, target) {
 
-    // get data
-    util.getData(function (data) {
+    // init model
+    data.polygons.sides.forEach(model.addItem);
 
-      // init model
-      data.polygons.sides.forEach(model.addItem);
+    // render target with model
+    render.appendElementWithThisList.call(model.items(), target);
 
-      // render single instance
-      render.appendElementWithThisList.call(model.items(), {id: "ex1", parentId: "content"});
-    });
   }
 
-  init();
+  function init(target) {
+
+    util.getData(
+      config.xhrUrl,
+
+      function getAsyncData(data) {
+
+        renderData(data, target);
+      },
+
+      function getDefaultData() {
+        var data = config.defaultData || {};
+
+        renderData(data, target);
+      }
+    );
+  }
+
+  var instance = {id: "ex1", parentId: "content"};
+
+  init(instance);
 
 }());
