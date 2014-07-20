@@ -16,14 +16,15 @@
   function init(target) {
 
     util.getData(
+
       config.xhrUrl,
 
-      function getAsyncData(data) {
+      function renderAsyncData(data) {
 
         renderData(data, target);
       },
 
-      function getDefaultData() {
+      function renderDefaultData() {
         var data = config.defaultData || {};
 
         renderData(data, target);

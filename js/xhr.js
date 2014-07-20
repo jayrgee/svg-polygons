@@ -12,9 +12,10 @@ var xhr = (function () {
           this.responseText !== null) {
         // success!
         handleSuccess(JSON.parse(this.responseText));
+      } else {
+        // something went wrong
+        handleError({status: this.status, statusText: this.statusText, responseText: this.responseText});
       }
-      // something went wrong
-      handleError({status: this.status, statusText: this.statusText, responseText: this.responseText});
     }
   }
 
