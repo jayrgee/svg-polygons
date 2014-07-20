@@ -4,7 +4,7 @@ var config = (function () {
   return {
 
     // configure xhr
-    xhrUrl: "http://localhost:3000/data/regular-polygons1.json",
+    xhrUrl: "../data/regular-polygons.json",
 
     // configure data to be loaded when using file: protocol
     "defaultData": {
