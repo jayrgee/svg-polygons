@@ -10,7 +10,15 @@ var model = (function () {
   function addItem(data) {
     var item = {
         name: data.name,
-        system: data.system
+        system: data.system,
+        size: {
+          Metric: 0,
+          AF: 0
+        },
+        label: {
+          Metric: "",
+          AF: ""
+        }
       },
       uomInch = "\"",
       uomMM = "mm",
@@ -18,21 +26,19 @@ var model = (function () {
 
     switch (item.system) {
     case "AF":
-      item.sizeAF = data.size;
-      item.sizeMM = data.size * mmPerInch;
+      item.size.AF = data.size;
+      item.size.Metric = data.size * mmPerInch;
       break;
     case "Metric":
-      item.sizeMM = data.size;
-      item.sizeAF = data.size / mmPerInch;
+      item.size.Metric = data.size;
+      item.size.AF = data.size / mmPerInch;
       break;
     default:
-      item.sizeMM = 0;
-      item.sizeAF = 0;
       break;
     }
 
-    item.labelAF = item.sizeAF.toFixed(3) + uomInch;
-    item.labelMM = item.sizeMM.toFixed(2) + uomMM;
+    item.label.AF = item.size.AF.toFixed(3) + uomInch;
+    item.label.Metric = item.size.Metric.toFixed(2) + uomMM;
 
     items.push(item);
   }

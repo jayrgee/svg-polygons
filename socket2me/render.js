@@ -12,17 +12,17 @@ var render = (function () {
       elListSz,
       elListSzItmMM,
       elListSzItmAF,
-      elSvg = svgPolygons.getHexagon(item.sizeAF * dpi / Math.sqrt(3));
+      elSvg = svgPolygons.getHexagon(item.size.AF * dpi / Math.sqrt(3));
 
     elSpanNm = document.createElement("span");
     elSpanNm.setAttribute("class", "name");
     elSpanNm.textContent = item.name;
 
     elListSzItmMM = document.createElement("li");
-    elListSzItmMM.textContent = item.labelMM;
+    elListSzItmMM.textContent = item.label.Metric;
 
     elListSzItmAF = document.createElement("li");
-    elListSzItmAF.textContent = item.labelAF;
+    elListSzItmAF.textContent = item.label.AF;
 
     elListSz = document.createElement("ul");
     elListSz.setAttribute("class", "size");

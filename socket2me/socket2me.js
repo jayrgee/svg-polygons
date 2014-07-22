@@ -10,7 +10,7 @@
 
     // render targets with model
     targets.forEach(render.appendElementWithThisList,
-        model.items().sort(function (a, b) { return a.sizeMM - b.sizeMM; })
+        model.items().sort(function (a, b) { return a.size.Metric - b.size.Metric; })
       );
 
   }
