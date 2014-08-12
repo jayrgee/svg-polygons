@@ -51,7 +51,24 @@ var svgPolygons = (function () {
     return getRegularPolygon(n, r, _options);
   }
 
+  function getCircle(r, options) {
+    var el,
+      poly,
+      _options = options || {style: {}},
+      p = _options.style.strokeWidth || defaultPadding,
+      w = _options.w || r * 2,
+      h = _options.h || r * 2;
+
+    el = svgCore.getSvgElement(w + 2 * p, h + 2 * p);
+    poly = svgCore.getSvgCircle(r + p, r + p, r, _options.style);
+
+    el.appendChild(poly);
+
+    return el;
+  }
+
   return { // exports
+    getCircle: getCircle,
     getHexagon: getHexagon,
     getRegularPolygon: getRegularPolygon
   };
